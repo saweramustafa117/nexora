@@ -1,12 +1,18 @@
 import ChatPanel from '../components/ChatPanel';
+import { useUserStore } from '../store/useUserStore';
 
 export default function ChatPage() {
+  const role = useUserStore((s) => s.role);
+  const isRecruiter = role === 'recruiter';
+
   return (
     <div className="mx-auto max-w-3xl space-y-4">
       <div>
         <h1 className="text-2xl font-bold text-slate-900">Chat Assistant</h1>
         <p className="mt-1 text-sm text-slate-500">
-          Ask Nexora AI about your profile, skill gaps, job matches, and career advice — powered by OpenRouter.
+          {isRecruiter
+            ? 'Nexora AI in Hiring Intelligence mode — ask about candidate screening, match scores, talent pool, and your job pipeline.'
+            : 'Nexora AI in Career Coach mode — ask about skill gaps, job matches, applications, and your career path.'}
         </p>
       </div>
       <ChatPanel fullPage />

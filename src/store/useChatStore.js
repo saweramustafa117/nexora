@@ -1,26 +1,49 @@
 import { create } from 'zustand';
+import { useUserStore } from './useUserStore';
+
+const emptyMessages = () => ({ candidate: [], recruiter: [] });
 
 export const useChatStore = create((set, get) => ({
   isOpen: false,
-  messages: [],
+  messagesByRole: emptyMessages(),
   isLoading: false,
   error: null,
+
+  getMessages: () => {
+    const role = useUserStore.getState().role ?? 'candidate';
+    return get().messagesByRole[role] ?? [];
+  },
 
   toggleOpen: () => set((state) => ({ isOpen: !state.isOpen })),
   setOpen: (isOpen) => set({ isOpen }),
 
-  addMessage: (role, content) =>
+  addMessage: (msgRole, content) => {
+    const userRole = useUserStore.getState().role ?? 'candidate';
     set((state) => ({
-      messages: [...state.messages, { role, content, id: `${Date.now()}-${Math.random().toString(36).slice(2)}` }],
+      messagesByRole: {
+        ...state.messagesByRole,
+        [userRole]: [
+          ...state.messagesByRole[userRole],
+          { role: msgRole, content, id: `${Date.now()}-${Math.random().toString(36).slice(2)}` },
+        ],
+      },
       error: null,
-    })),
+    }));
+  },
 
   setLoading: (isLoading) => set({ isLoading }),
   setError: (error) => set({ error, isLoading: false }),
 
-  clearChat: () => set({ messages: [], error: null }),
+  clearChat: () => {
+    const userRole = useUserStore.getState().role ?? 'candidate';
+    set((state) => ({
+      messagesByRole: { ...state.messagesByRole, [userRole]: [] },
+      error: null,
+    }));
+  },
 
-  reset: () => set({ isOpen: false, messages: [], isLoading: false, error: null }),
+  reset: () =>
+    set({ isOpen: false, messagesByRole: emptyMessages(), isLoading: false, error: null }),
 }));
 
 export const useToastStore = create((set) => ({

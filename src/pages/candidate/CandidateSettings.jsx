@@ -1,8 +1,8 @@
-import { Bell, Shield, User } from 'lucide-react';
+import { Bell, Shield, User, GraduationCap } from 'lucide-react';
 import { useUserStore } from '../../store/useUserStore';
 
 export default function CandidateSettings() {
-  const { name, skills } = useUserStore();
+  const { name, skills, triggerTutorial } = useUserStore();
   const avatar = name.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
 
   return (
@@ -16,6 +16,13 @@ export default function CandidateSettings() {
             <p className="text-sm text-slate-500">{skills.length} skills tracked</p>
           </div>
         </div>
+      </div>
+      <div className="flex items-center justify-between rounded-2xl border border-brand-200 bg-gradient-to-r from-brand-50 to-cyan-50 p-4 shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="rounded-lg bg-brand-100 p-2"><GraduationCap className="h-5 w-5 text-brand-600" /></div>
+          <div><p className="font-medium">Dashboard Tutorial</p><p className="text-xs text-slate-500">Replay the quick tour of Nexora features</p></div>
+        </div>
+        <button onClick={triggerTutorial} className="rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-700">Replay tour</button>
       </div>
       {[
         { icon: User, title: 'Profile Visibility', desc: 'Control who sees your skill profile' },

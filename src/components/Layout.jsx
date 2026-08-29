@@ -2,6 +2,7 @@ import Sidebar from './Sidebar';
 import TopBar from './TopBar';
 import ChatWidget from './ChatWidget';
 import ToastContainer from './Toast';
+import DashboardTutorial from './DashboardTutorial';
 
 export default function Layout({ children }) {
   return (
@@ -11,6 +12,7 @@ export default function Layout({ children }) {
         <TopBar />
         <main className="flex-1 p-6">{children}</main>
       </div>
+      <DashboardTutorial />
       <ChatWidget />
       <ToastContainer />
     </div>

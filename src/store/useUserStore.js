@@ -9,6 +9,8 @@ export const useUserStore = create((set, get) => ({
   industry: '',
   skills: [...DEFAULT_CANDIDATE_SKILLS],
   onboardingComplete: false,
+  tutorialSeen: { candidate: false, recruiter: false },
+  tutorialForceOpen: false,
   notifications: MOCK_NOTIFICATIONS.map((n) => ({ ...n })),
 
   setRole: (role) => set({ role }),
@@ -24,6 +26,21 @@ export const useUserStore = create((set, get) => ({
     }),
 
   switchRole: (role) => set({ role }),
+
+  dismissTutorial: (role) =>
+    set((state) => ({
+      tutorialSeen: { ...state.tutorialSeen, [role]: true },
+    })),
+
+  resetTutorial: (role) =>
+    set((state) => ({
+      tutorialSeen: role
+        ? { ...state.tutorialSeen, [role]: false }
+        : { candidate: false, recruiter: false },
+    })),
+
+  triggerTutorial: () => set({ tutorialForceOpen: true }),
+  clearTutorialForce: () => set({ tutorialForceOpen: false }),
 
   updateSkill: (skillName, proficiency) =>
     set((state) => {
@@ -71,6 +88,8 @@ export const useUserStore = create((set, get) => ({
       industry: '',
       skills: [...DEFAULT_CANDIDATE_SKILLS],
       onboardingComplete: false,
+      tutorialSeen: { candidate: false, recruiter: false },
+      tutorialForceOpen: false,
       notifications: MOCK_NOTIFICATIONS.map((n) => ({ ...n })),
     }),
 }));
