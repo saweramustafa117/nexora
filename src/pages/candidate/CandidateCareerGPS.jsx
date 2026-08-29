@@ -13,22 +13,22 @@ export default function CandidateCareerGPS() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Career GPS</h1>
+        <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">Career GPS</h1>
         <p className="mt-1 text-sm text-slate-500">Navigate from where you are to where you want to be</p>
       </div>
       <CareerGPS />
       {job && (
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="mb-4 flex items-center justify-between">
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h3 className="font-semibold">Skill Analysis</h3>
-            <select value={jobId} onChange={(e) => setJobId(e.target.value)} className="rounded-xl border border-slate-200 px-3 py-1.5 text-sm">
+            <select value={jobId} onChange={(e) => setJobId(e.target.value)} className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm sm:w-auto sm:py-1.5">
               {jobs.map((j) => <option key={j.id} value={j.id}>{j.title}</option>)}
             </select>
           </div>
           <SkillRadarChart job={job} candidateSkills={skills} />
         </div>
       )}
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
         <h3 className="mb-4 font-semibold">Your Skill Profile</h3>
         <div className="space-y-3">
           {skills.map((skill) => (

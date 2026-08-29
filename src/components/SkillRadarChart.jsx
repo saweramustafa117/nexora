@@ -16,11 +16,11 @@ export default function SkillRadarChart({ job, candidateSkills }) {
   }));
 
   return (
-    <div className="h-80 w-full">
+    <div className="h-64 w-full sm:h-80">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={data} cx="50%" cy="50%" outerRadius="70%">
+        <RadarChart data={data} cx="50%" cy="50%" outerRadius="65%">
           <PolarGrid stroke="#e2e8f0" />
-          <PolarAngleAxis dataKey="skill" tick={{ fontSize: 11, fill: '#64748b' }} />
+          <PolarAngleAxis dataKey="skill" tick={{ fontSize: 10, fill: '#64748b' }} />
           <Radar name="Your Skills" dataKey="candidate" stroke="#6366f1" fill="#6366f1" fillOpacity={0.2} strokeWidth={2} />
           <Radar name="Required" dataKey="required" stroke="#06b6d4" fill="#06b6d4" fillOpacity={0.1} strokeWidth={2} strokeDasharray="4 4" />
           <Legend />

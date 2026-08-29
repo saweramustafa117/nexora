@@ -26,7 +26,7 @@ export default function CandidateNetwork() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Network</h1>
+        <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">Network</h1>
         <p className="mt-1 text-sm text-slate-500">Quality connections aligned to your goals — click Connect, then Accept to simulate</p>
       </div>
 

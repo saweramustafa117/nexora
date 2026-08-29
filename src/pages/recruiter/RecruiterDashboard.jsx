@@ -33,7 +33,7 @@ export default function RecruiterDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Recruiter Dashboard</h1>
+        <h1 className="text-xl font-bold sm:text-2xl">Recruiter Dashboard</h1>
         <p className="text-sm text-slate-500">AI-powered screening — all actions update live</p>
       </div>
 
@@ -46,16 +46,16 @@ export default function RecruiterDashboard() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Smart Screening</h2>
-            <select value={selectedJobId} onChange={(e) => setSelectedJobId(e.target.value)} className="rounded-xl border px-3 py-1.5 text-sm">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="text-base font-semibold sm:text-lg">Smart Screening</h2>
+            <select value={selectedJobId} onChange={(e) => setSelectedJobId(e.target.value)} className="w-full rounded-xl border px-3 py-2 text-sm sm:w-auto sm:py-1.5">
               {jobs.map((j) => <option key={j.id} value={j.id}>{j.title}</option>)}
             </select>
           </div>
           <SmartScreeningTable jobId={selectedJobId} onSelectCandidate={setSelectedCandidate} />
         </div>
         {selectedJob && (
-          <div className="rounded-2xl border bg-white p-5 shadow-sm">
+          <div className="rounded-2xl border bg-white p-4 shadow-sm sm:p-5">
             <h3 className="font-semibold">{selectedJob.title}</h3>
             <p className="text-sm text-slate-500">{selectedJob.company}</p>
             <p className="mt-2 text-sm">Avg match across pool: <span className="font-bold text-brand-600">

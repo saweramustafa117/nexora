@@ -11,10 +11,10 @@ export default function StatCard({ icon: IconComp, label, value, suffix = '', tr
   const isPercent = typeof value === 'string' && value.includes('%');
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5">
       <div className="flex items-start justify-between">
-        <div className={`rounded-xl p-2.5 ${colorMap[color]}`}>
-          <IconComp className="h-5 w-5" />
+        <div className={`rounded-xl p-2 sm:p-2.5 ${colorMap[color]}`}>
+          <IconComp className="h-4 w-4 sm:h-5 sm:w-5" />
         </div>
         {trend != null && (
           <span className={`text-xs font-medium ${trend > 0 ? 'text-emerald-600' : 'text-red-500'}`}>
@@ -22,8 +22,8 @@ export default function StatCard({ icon: IconComp, label, value, suffix = '', tr
           </span>
         )}
       </div>
-      <p className="mt-4 text-sm text-slate-500">{label}</p>
-      <p className="mt-1 text-2xl font-bold text-slate-900">
+      <p className="mt-3 text-xs text-slate-500 sm:mt-4 sm:text-sm">{label}</p>
+      <p className="mt-1 text-xl font-bold text-slate-900 sm:text-2xl">
         {animate && !isNaN(numValue) ? <CountUp end={numValue} suffix={isPercent ? '%' : suffix} /> : <>{value}{suffix}</>}
       </p>
     </div>

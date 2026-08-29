@@ -32,28 +32,28 @@ export default function TalentPool() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Talent Pool</h1>
+        <h1 className="text-xl font-bold sm:text-2xl">Talent Pool</h1>
         <p className="text-sm text-slate-500">Discover hidden talent across the full candidate database</p>
       </div>
 
-      <div className="flex flex-wrap gap-3 rounded-2xl border bg-white p-4 shadow-sm">
-        <div className="relative flex-1 min-w-[200px]">
+      <div className="flex flex-col gap-3 rounded-2xl border bg-white p-4 shadow-sm sm:flex-row sm:flex-wrap">
+        <div className="relative w-full min-w-0 sm:min-w-[200px] sm:flex-1">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by name or title..." className="w-full rounded-xl border pl-9 pr-3 py-2 text-sm" />
         </div>
-        <select value={skillFilter} onChange={(e) => setSkillFilter(e.target.value)} className="rounded-xl border px-3 py-2 text-sm">
+        <select value={skillFilter} onChange={(e) => setSkillFilter(e.target.value)} className="w-full rounded-xl border px-3 py-2 text-sm sm:w-auto">
           <option value="">All skills</option>
           {SKILL_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
-        <div className="flex items-center gap-2 text-sm">
-          <label>Min match:</label>
-          <input type="range" min={0} max={100} value={minMatch} onChange={(e) => setMinMatch(+e.target.value)} className="w-24" />
-          <span className="w-8 font-medium">{minMatch}%</span>
+        <div className="flex w-full items-center gap-2 text-sm sm:w-auto">
+          <label className="shrink-0">Min match:</label>
+          <input type="range" min={0} max={100} value={minMatch} onChange={(e) => setMinMatch(+e.target.value)} className="min-w-0 flex-1 sm:w-24" />
+          <span className="w-8 shrink-0 font-medium">{minMatch}%</span>
         </div>
-        <div className="flex items-center gap-2 text-sm">
-          <label>Min potential:</label>
-          <input type="range" min={0} max={100} value={minPotential} onChange={(e) => setMinPotential(+e.target.value)} className="w-24" />
-          <span className="w-8 font-medium">{minPotential}%</span>
+        <div className="flex w-full items-center gap-2 text-sm sm:w-auto">
+          <label className="shrink-0">Min potential:</label>
+          <input type="range" min={0} max={100} value={minPotential} onChange={(e) => setMinPotential(+e.target.value)} className="min-w-0 flex-1 sm:w-24" />
+          <span className="w-8 shrink-0 font-medium">{minPotential}%</span>
         </div>
       </div>
 

@@ -43,7 +43,7 @@ export default function CandidateDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Welcome back, {name.split(' ')[0]}</h1>
+        <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">Welcome back, {name.split(' ')[0]}</h1>
         <p className="mt-1 text-sm text-slate-500">Your talent intelligence overview — all scores update live</p>
       </div>
 
@@ -57,13 +57,13 @@ export default function CandidateDashboard() {
       <CareerGPS />
 
       {compareJob && (
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h3 className="font-semibold text-slate-900">Skill Radar — vs Job Requirements</h3>
             <select
               value={compareJobId}
               onChange={(e) => setCompareJobId(e.target.value)}
-              className="rounded-xl border border-slate-200 px-3 py-1.5 text-sm"
+              className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm sm:w-auto sm:py-1.5"
             >
               {jobs.map((j) => (
                 <option key={j.id} value={j.id}>{j.title} @ {j.company}</option>
@@ -75,17 +75,17 @@ export default function CandidateDashboard() {
       )}
 
       <div>
-        <h2 className="mb-4 text-lg font-semibold">Top Job Matches</h2>
+        <h2 className="mb-4 text-base font-semibold sm:text-lg">Top Job Matches</h2>
         <JobMatchList limit={4} />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div>
-          <h2 className="mb-4 text-lg font-semibold">Opportunities Feed</h2>
+          <h2 className="mb-4 text-base font-semibold sm:text-lg">Opportunities Feed</h2>
           <OpportunitiesFeed opportunities={mockOpportunities.slice(0, 6)} />
         </div>
         <div>
-          <h2 className="mb-4 text-lg font-semibold">People Aligned With Your Goals</h2>
+          <h2 className="mb-4 text-base font-semibold sm:text-lg">People Aligned With Your Goals</h2>
           <NetworkingSuggestions />
         </div>
       </div>

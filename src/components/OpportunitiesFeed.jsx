@@ -36,18 +36,20 @@ export default function OpportunitiesFeed({ opportunities }) {
 
   return (
     <div>
-      <div className="mb-4 flex flex-wrap gap-2">
-        {filters.map((f) => (
-          <button
-            key={f}
-            onClick={() => setFilter(f)}
-            className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-              filter === f ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            }`}
-          >
-            {f === 'all' ? 'All' : typeConfig[f].label}
-          </button>
-        ))}
+      <div className="-mx-1 mb-4 overflow-x-auto px-1 pb-1">
+        <div className="flex min-w-max gap-2 sm:min-w-0 sm:flex-wrap">
+          {filters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                filter === f ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              }`}
+            >
+              {f === 'all' ? 'All' : typeConfig[f].label}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">

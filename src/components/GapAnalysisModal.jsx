@@ -33,8 +33,8 @@ export default function GapAnalysisModal({ job, isOpen, onClose }) {
     <Modal isOpen={isOpen} onClose={onClose} title="Gap Analysis" size="lg">
       <div className="space-y-6">
         <div className="rounded-2xl bg-brand-50 p-4">
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
               <h3 className="font-semibold text-slate-900">{job.title}</h3>
               <p className="text-sm text-slate-600">{job.company}</p>
             </div>
@@ -67,17 +67,17 @@ export default function GapAnalysisModal({ job, isOpen, onClose }) {
           <h4 className="mb-3 text-sm font-semibold text-slate-800">Recommended Resources</h4>
           <div className="space-y-2">
             {resources.map((resource, i) => (
-              <div key={i} className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-white p-2 shadow-sm">
+              <div key={i} className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="shrink-0 rounded-lg bg-white p-2 shadow-sm">
                     <BookOpen className="h-4 w-4 text-brand-600" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm font-medium text-slate-800">{resource.title}</p>
                     <p className="text-xs text-slate-500">{resource.skill} · {resource.type}</p>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex shrink-0 gap-2">
                   <button
                     onClick={() => handleLearnSkill(resource.skill)}
                     className="flex items-center gap-1 rounded-lg bg-emerald-600 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-emerald-700"
