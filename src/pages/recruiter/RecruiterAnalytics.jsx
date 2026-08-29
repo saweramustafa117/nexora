@@ -10,24 +10,24 @@ export default function RecruiterAnalytics() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Analytics</h1>
+        <h1 className="text-xl font-bold sm:text-2xl">Analytics</h1>
         <p className="text-sm text-slate-500">Hiring pipeline insights — updates as you screen candidates</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
           <h3 className="font-semibold">Application Quality</h3>
           <p className="mb-4 text-sm text-slate-500">Relevant vs irrelevant (live from screening state)</p>
           <ApplicationQualityChart />
         </div>
-        <div className="rounded-2xl border bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
           <h3 className="font-semibold">Hiring Funnel</h3>
           <p className="mb-4 text-sm text-slate-500">Pipeline conversion at each stage</p>
           <HiringFunnelChart />
         </div>
       </div>
 
-      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
         <h3 className="mb-1 font-semibold">Match Quality Distribution</h3>
         <p className="mb-4 text-sm text-slate-500">Top candidates vs {refJob?.title ?? 'selected role'}</p>
         <TalentMatchBarChart candidates={candidates} job={refJob} />

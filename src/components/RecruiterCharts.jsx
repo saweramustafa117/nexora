@@ -61,7 +61,7 @@ export function HiringFunnelChart() {
         <BarChart data={data} layout="vertical" margin={{ left: 20 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
           <XAxis type="number" tick={{ fontSize: 11 }} />
-          <YAxis dataKey="stage" type="category" width={90} tick={{ fontSize: 11 }} />
+          <YAxis dataKey="stage" type="category" width={72} tick={{ fontSize: 10 }} />
           <Tooltip />
           <Bar dataKey="count" radius={[0, 6, 6, 0]}>
             {data.map((_, i) => <Cell key={i} fill={colors[i]} />)}

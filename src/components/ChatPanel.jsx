@@ -82,7 +82,7 @@ export default function ChatPanel({ fullPage = false }) {
   const RoleIcon = isRecruiter ? Building2 : User;
 
   return (
-    <div className={`flex flex-col bg-white ${fullPage ? 'h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 shadow-sm' : 'h-full'}`}>
+    <div className={`flex flex-col bg-white ${fullPage ? 'h-[calc(100dvh-10rem)] sm:h-[calc(100vh-12rem)] rounded-2xl border border-slate-200 shadow-sm' : 'h-full min-h-0'}`}>
       <div className={`flex items-center justify-between border-b px-4 py-3 ${headerBg}`}>
         <div className="flex items-center gap-2">
           <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${fullPage ? (isRecruiter ? 'bg-violet-100' : 'bg-brand-100') : 'bg-white/20'}`}>

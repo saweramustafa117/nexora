@@ -8,7 +8,7 @@ export default function ChatPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-4">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Chat Assistant</h1>
+        <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">Chat Assistant</h1>
         <p className="mt-1 text-sm text-slate-500">
           {isRecruiter
             ? 'Nexora AI in Hiring Intelligence mode — ask about candidate screening, match scores, talent pool, and your job pipeline.'

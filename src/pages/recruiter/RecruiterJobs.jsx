@@ -49,18 +49,18 @@ export default function RecruiterJobs() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Job Postings</h1>
+          <h1 className="text-xl font-bold sm:text-2xl">Job Postings</h1>
           <p className="text-sm text-slate-500">Manage listings — post new jobs to auto-generate applicant matches</p>
         </div>
-        <button onClick={() => setShowForm(true)} className="flex items-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-700">
+        <button onClick={() => setShowForm(true)} className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-700 sm:w-auto">
           <Plus className="h-4 w-4" /> Post New Job
         </button>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border bg-white shadow-sm">
-        <table className="w-full text-left text-sm">
+      <div className="overflow-x-auto rounded-2xl border bg-white shadow-sm">
+        <table className="w-full min-w-[720px] text-left text-sm">
           <thead>
             <tr className="border-b bg-slate-50">
               <th className="px-4 py-3 font-semibold text-slate-600">Title</th>
