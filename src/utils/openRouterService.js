@@ -1,5 +1,6 @@
-// ⚠️ DEMO ONLY: VITE_OPENROUTER_API_KEY is exposed client-side via import.meta.env.
-// Never ship production apps with API keys in frontend bundles — use a backend proxy.
+// ⚠️ DEMO ONLY: API key is bundled client-side. Use a backend proxy in production.
+
+import { OPENROUTER_API_KEY, OPENROUTER_MODEL as CONFIG_MODEL } from '../config/env.js';
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -9,8 +10,7 @@ const FALLBACK_MODELS = [
   'meta-llama/llama-3.2-3b-instruct:free',
 ];
 
-export const OPENROUTER_MODEL =
-  import.meta.env.VITE_OPENROUTER_MODEL ?? 'openrouter/free';
+export const OPENROUTER_MODEL = CONFIG_MODEL;
 
 function getModelsToTry() {
   const preferred = OPENROUTER_MODEL;
@@ -103,11 +103,14 @@ async function callModel(model, apiKey, systemPrompt, apiMessages) {
 }
 
 export async function sendChatMessage(messages, userContext) {
-  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY?.trim();
+  const apiKey = OPENROUTER_API_KEY;
 
   if (!apiKey) {
+    const isProd = typeof window !== 'undefined' && !window.location.hostname.includes('localhost');
     throw new Error(
-      'API key missing. Add VITE_OPENROUTER_API_KEY to .env and restart the dev server.',
+      isProd
+        ? 'API key was not baked into this build. Vercel → Environment Variables → VITE_OPENROUTER_API_KEY (Config) → Redeploy with cache OFF. Check build logs for "✓ VITE_OPENROUTER_API_KEY present".'
+        : 'API key missing. Add VITE_OPENROUTER_API_KEY to .env and restart npm run dev.',
     );
   }
 
